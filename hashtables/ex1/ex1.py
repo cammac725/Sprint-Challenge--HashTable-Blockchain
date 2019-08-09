@@ -9,9 +9,17 @@ from hashtables import (HashTable,
 def get_indices_of_item_weights(weights, length, limit):
     ht = HashTable(16)
 
-    """
-    YOUR CODE HERE
-    """
+    for i in range(length):
+        # get difference
+        diff = limit - weights[i]
+
+        # check if it's already in ht
+        match = hash_table_retrieve(ht, diff)
+        if match is not None:
+            return [i, match]
+        
+        # if it's not, insert it in the table
+        hash_table_insert(ht, weights[i], i)
 
     return None
 
